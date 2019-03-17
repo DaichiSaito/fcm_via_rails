@@ -1,0 +1,7 @@
+require 'oven'
+
+Oven.bake :'Andpush::Client', destination: 'lib/andpush/' do
+  format :json
+
+  post :message, '/fcm/send', as: :push, class: 'Response'
+end
