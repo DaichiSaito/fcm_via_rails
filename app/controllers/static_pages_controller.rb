@@ -2,8 +2,8 @@ require 'andpush'
 
 class StaticPagesController < ApplicationController
   def index
-    server_key   = "..." # Your server key
-    device_token = "..." # The device token of the device you'd like to push a message to
+    server_key   = Rails.application.credentials.dig(:fcm, :server_key)
+    device_token = Rails.application.credentials.dig(:fcm, :device_token)
     client  = Andpush.new(server_key, pool_size: 25)
     payload = {
         to: device_token,
